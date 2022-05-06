@@ -1,0 +1,22 @@
+# file options
+
+--swiftversion 5.6
+
+# disabled rules
+
+--disable andOperator
+--disable redundantReturn
+
+# enabled rules
+
+--enable isEmpty
+
+# format options
+
+--decimalgrouping ignore # for now
+--elseposition next-line
+--extensionacl on-declarations
+--indent 2
+--maxwidth 100
+--ranges no-space
+--self insert
