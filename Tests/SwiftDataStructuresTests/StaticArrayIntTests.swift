@@ -336,7 +336,7 @@ extension StaticArrayIntTests {
 // MARK: - CustomStringConvertible
 
 extension StaticArrayIntTests {
-  func testDescriptionFromInt() {
+  func testDescriptionFromInit() {
     let staticArray = StaticArrayInt()
     let actual = String(describing: staticArray)
     let expected = "[]"
@@ -380,7 +380,7 @@ extension StaticArrayIntTests {
 // MARK: - CustomDebugStringConvertible
 
 extension StaticArrayIntTests {
-  func testDebugDescriptionFromInt() {
+  func testDebugDescriptionFromInit() {
     let staticArray = StaticArrayInt()
     let actual = String(reflecting: staticArray)
     let expected = "[]"

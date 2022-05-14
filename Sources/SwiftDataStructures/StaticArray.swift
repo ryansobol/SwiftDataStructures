@@ -1,15 +1,15 @@
-// MARK: - StaticArrayInt
+// MARK: - StaticArray
 
-struct StaticArrayInt {
+struct StaticArray<Element> {
   private var storage: Storage
 }
 
-// MARK: - StaticArrayInt.Storage
+// MARK: - StaticArray.Storage
 
-extension StaticArrayInt {
+extension StaticArray {
   private final class Storage {
     let count: Int
-    let elements: UnsafeMutablePointer<Int>
+    let elements: UnsafeMutablePointer<Element>
 
     convenience init(from other: Storage) {
       self.init(unsafeUninitializedCapacity: other.count) { buffer, count in
@@ -20,14 +20,14 @@ extension StaticArrayInt {
     }
 
     init(unsafeUninitializedCapacity: Int,
-         initializingWith initializer: (_ buffer: inout UnsafeMutableBufferPointer<Int>,
+         initializingWith initializer: (_ buffer: inout UnsafeMutableBufferPointer<Element>,
                                         _ initializedCount: inout Int) throws -> Void) rethrows
     {
       if unsafeUninitializedCapacity < 0 {
-        fatalError("Can't construct StaticArrayInt with count < 0")
+        fatalError("Can't construct StaticArray with count < 0")
       }
 
-      self.elements = UnsafeMutablePointer<Int>.allocate(capacity: unsafeUninitializedCapacity)
+      self.elements = UnsafeMutablePointer<Element>.allocate(capacity: unsafeUninitializedCapacity)
 
       var count = unsafeUninitializedCapacity
       var buffer = UnsafeMutableBufferPointer(start: self.elements, count: count)
@@ -37,7 +37,7 @@ extension StaticArrayInt {
       self.count = count
     }
 
-    func withUnsafeBufferPointer<R>(_ body: (UnsafeBufferPointer<Int>) throws -> R) rethrows -> R {
+    func withUnsafeBufferPointer<R>(_ body: (UnsafeBufferPointer<Element>) throws -> R) rethrows -> R {
       return try body(UnsafeBufferPointer(start: self.elements, count: self.count))
     }
 
@@ -50,12 +50,12 @@ extension StaticArrayInt {
 
 // MARK: - Initialization
 
-extension StaticArrayInt {
+extension StaticArray {
   init() {
     self.init(unsafeUninitializedCapacity: 0) { _, _ in }
   }
 
-  init(repeating: Int, count: Int) {
+  init(repeating: Element, count: Int) {
     self.init(unsafeUninitializedCapacity: count) { buffer, _ in
       buffer.initialize(repeating: repeating)
     }
@@ -63,7 +63,7 @@ extension StaticArrayInt {
 
   init(
     unsafeUninitializedCapacity: Int,
-    initializingWith initializer: (_ buffer: inout UnsafeMutableBufferPointer<Int>,
+    initializingWith initializer: (_ buffer: inout UnsafeMutableBufferPointer<Element>,
                                    _ initializedCount: inout Int) throws -> Void
   ) rethrows {
     self.storage = try Storage(
@@ -75,8 +75,8 @@ extension StaticArrayInt {
 
 // MARK: - ExpressibleByArrayLiteral
 
-extension StaticArrayInt: ExpressibleByArrayLiteral {
-  init(arrayLiteral: Int...) {
+extension StaticArray: ExpressibleByArrayLiteral {
+  init(arrayLiteral: Element...) {
     self.init(unsafeUninitializedCapacity: arrayLiteral.count) { buffer, count in
       (_, count) = buffer.initialize(from: arrayLiteral)
     }
@@ -86,7 +86,7 @@ extension StaticArrayInt: ExpressibleByArrayLiteral {
 // MARK: - Collection
 // And Sequence
 
-extension StaticArrayInt: Collection {
+extension StaticArray: Collection {
   var startIndex: Int {
     return 0
   }
@@ -99,7 +99,7 @@ extension StaticArrayInt: Collection {
     return i + 1
   }
 
-  subscript(_ index: Int) -> Int {
+  subscript(_ index: Int) -> Element {
     get {
       guard self.indices.contains(index) else {
         fatalError("Index out of range")
@@ -124,7 +124,7 @@ extension StaticArrayInt: Collection {
 
 // MARK: - BidirectionalCollection
 
-extension StaticArrayInt: BidirectionalCollection {
+extension StaticArray: BidirectionalCollection {
   func index(before i: Int) -> Int {
     return i - 1
   }
@@ -133,16 +133,16 @@ extension StaticArrayInt: BidirectionalCollection {
 // MARK: - RandomAccessCollection
 
 // Because Self.Index == Int: Stridable, there is nothing to implement
-extension StaticArrayInt: RandomAccessCollection {}
+extension StaticArray: RandomAccessCollection {}
 
 // MARK: - MutableCollection
 
 // Because subscript { set } is defined above, there is nothing to implement
-extension StaticArrayInt: MutableCollection {}
+extension StaticArray: MutableCollection {}
 
 // MARK: - CustomStringConvertible
 
-extension StaticArrayInt: CustomStringConvertible {
+extension StaticArray: CustomStringConvertible {
   var description: String {
     return "[" + self.map { String(reflecting: $0) }.joined(separator: ", ") + "]"
   }
@@ -150,7 +150,7 @@ extension StaticArrayInt: CustomStringConvertible {
 
 // MARK: - CustomDebugStringConvertible
 
-extension StaticArrayInt: CustomDebugStringConvertible {
+extension StaticArray: CustomDebugStringConvertible {
   var debugDescription: String {
     return self.description
   }
@@ -158,7 +158,7 @@ extension StaticArrayInt: CustomDebugStringConvertible {
 
 // MARK: - Equatable
 
-extension StaticArrayInt: Equatable {
+extension StaticArray: Equatable where Element: Equatable {
   static func == (lhs: Self, rhs: Self) -> Bool {
     return lhs.elementsEqual(rhs)
   }
@@ -166,7 +166,7 @@ extension StaticArrayInt: Equatable {
 
 // MARK: - Hashable
 
-extension StaticArrayInt: Hashable {
+extension StaticArray: Hashable where Element: Hashable {
   func hash(into hasher: inout Hasher) {
     self.forEach { hasher.combine($0) }
   }
@@ -174,15 +174,15 @@ extension StaticArrayInt: Hashable {
 
 // MARK: - Combination
 
-extension StaticArrayInt {
+extension StaticArray {
   static func + (lhs: Self, rhs: Self) -> Self {
     return Self(unsafeUninitializedCapacity: lhs.count + rhs.count) { buffer, _ in
-      for (index, element) in lhs.enumerated() {
-        buffer[index] = element
+      for index in 0..<lhs.count {
+        buffer[index] = lhs[index]
       }
 
-      for (index, element) in rhs.enumerated() {
-        buffer[lhs.count + index] = element
+      for index in 0..<rhs.count {
+        buffer[lhs.count + index] = rhs[index]
       }
     }
   }
@@ -191,8 +191,8 @@ extension StaticArrayInt {
 // MARK: - withUnsafeBufferPointer
 // And for verifying value type with copy-on-write semantics
 
-extension StaticArrayInt {
-  func withUnsafeBufferPointer<R>(_ body: (UnsafeBufferPointer<Int>) throws -> R) rethrows -> R {
+extension StaticArray {
+  func withUnsafeBufferPointer<R>(_ body: (UnsafeBufferPointer<Element>) throws -> R) rethrows -> R {
     return try self.storage.withUnsafeBufferPointer(body)
   }
 }
