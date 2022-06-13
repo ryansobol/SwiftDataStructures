@@ -177,12 +177,12 @@ extension StaticArray: Hashable where Element: Hashable {
 extension StaticArray {
   static func + (lhs: Self, rhs: Self) -> Self {
     return Self(unsafeUninitializedCapacity: lhs.count + rhs.count) { buffer, _ in
-      for index in 0..<lhs.count {
-        buffer[index] = lhs[index]
+      for (index, element) in lhs.enumerated() {
+        buffer[index] = element
       }
 
-      for index in 0..<rhs.count {
-        buffer[lhs.count + index] = rhs[index]
+      for (index, element) in rhs.enumerated() {
+        buffer[lhs.count + index] = element
       }
     }
   }
