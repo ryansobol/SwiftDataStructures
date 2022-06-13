@@ -96,6 +96,7 @@ extension StaticArrayTests {
 }
 
 // MARK: - Collection
+// And Sequence
 
 extension StaticArrayTests {
   // MARK: - startIndex
