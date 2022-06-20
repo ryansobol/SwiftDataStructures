@@ -920,14 +920,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitAndInitUsingStrings() {
-    let lhs = StaticArray<String>()
-    let rhs = StaticArray<String>()
-    let actual = lhs + rhs
-    let expected: StaticArray<String> = []
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitAndInitUsingStrings() {
+//    let lhs = StaticArray<String>()
+//    let rhs = StaticArray<String>()
+//    let actual = lhs + rhs
+//    let expected: StaticArray<String> = []
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitAndInitRepeatingWithZeroCountUsingInts() {
     let lhs = StaticArray<Int>()
@@ -938,14 +938,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitAndInitRepeatingWithZeroCountUsingStrings() {
-    let lhs = StaticArray<String>()
-    let rhs = StaticArray(repeating: "", count: 0)
-    let actual = lhs + rhs
-    let expected: StaticArray<String> = []
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitAndInitRepeatingWithZeroCountUsingStrings() {
+//    let lhs = StaticArray<String>()
+//    let rhs = StaticArray(repeating: "", count: 0)
+//    let actual = lhs + rhs
+//    let expected: StaticArray<String> = []
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitAndInitRepeatingWithPositiveCountUsingInts() {
     let lhs = StaticArray<Int>()
@@ -956,14 +956,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitAndInitRepeatingWithPositiveCountUsingStrings() {
-    let lhs = StaticArray<String>()
-    let rhs = StaticArray(repeating: "", count: 3)
-    let actual = lhs + rhs
-    let expected: StaticArray = ["", "", ""]
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitAndInitRepeatingWithPositiveCountUsingStrings() {
+//    let lhs = StaticArray<String>()
+//    let rhs = StaticArray(repeating: "", count: 3)
+//    let actual = lhs + rhs
+//    let expected: StaticArray = ["", "", ""]
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitAndInitByEmptyArrayLiteralUsingInts() {
     let lhs = StaticArray<Int>()
@@ -974,14 +974,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitAndInitByEmptyArrayLiteralUsingStrings() {
-    let lhs = StaticArray<String>()
-    let rhs: StaticArray<String> = []
-    let actual = lhs + rhs
-    let expected: StaticArray<String> = []
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitAndInitByEmptyArrayLiteralUsingStrings() {
+//    let lhs = StaticArray<String>()
+//    let rhs: StaticArray<String> = []
+//    let actual = lhs + rhs
+//    let expected: StaticArray<String> = []
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitAndInitByNonEmptyArrayLiteralUsingInts() {
     let lhs = StaticArray<Int>()
@@ -992,14 +992,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitAndInitByNonEmptyArrayLiteralUsingStrings() {
-    let lhs = StaticArray<String>()
-    let rhs: StaticArray = ["a", "b", "c"]
-    let actual = lhs + rhs
-    let expected: StaticArray = ["a", "b", "c"]
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitAndInitByNonEmptyArrayLiteralUsingStrings() {
+//    let lhs = StaticArray<String>()
+//    let rhs: StaticArray = ["a", "b", "c"]
+//    let actual = lhs + rhs
+//    let expected: StaticArray = ["a", "b", "c"]
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitRepeatingWithZeroCountAndInitUsingInts() {
     let lhs = StaticArray(repeating: 0, count: 0)
@@ -1010,14 +1010,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitRepeatingWithZeroCountAndInitUsingStrings() {
-    let lhs = StaticArray(repeating: "", count: 0)
-    let rhs = StaticArray<String>()
-    let actual = lhs + rhs
-    let expected: StaticArray<String> = []
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitRepeatingWithZeroCountAndInitUsingStrings() {
+//    let lhs = StaticArray(repeating: "", count: 0)
+//    let rhs = StaticArray<String>()
+//    let actual = lhs + rhs
+//    let expected: StaticArray<String> = []
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitRepeatingWithZeroCountAndInitRepeatingWithZeroCountUsingInts() {
     let lhs = StaticArray(repeating: 0, count: 0)
@@ -1028,14 +1028,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitRepeatingWithZeroCountAndInitRepeatingWithZeroCountUsingStrings() {
-    let lhs = StaticArray(repeating: "", count: 0)
-    let rhs = StaticArray(repeating: "", count: 0)
-    let actual = lhs + rhs
-    let expected: StaticArray<String> = []
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitRepeatingWithZeroCountAndInitRepeatingWithZeroCountUsingStrings() {
+//    let lhs = StaticArray(repeating: "", count: 0)
+//    let rhs = StaticArray(repeating: "", count: 0)
+//    let actual = lhs + rhs
+//    let expected: StaticArray<String> = []
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitRepeatingWithZeroCountAndInitRepeatingWithPositiveCountUsingInts() {
     let lhs = StaticArray(repeating: 0, count: 0)
@@ -1046,14 +1046,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitRepeatingWithZeroCountAndInitRepeatingWithPositiveCountUsingStrings() {
-    let lhs = StaticArray(repeating: "", count: 0)
-    let rhs = StaticArray(repeating: "", count: 3)
-    let actual = lhs + rhs
-    let expected: StaticArray = ["", "", ""]
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitRepeatingWithZeroCountAndInitRepeatingWithPositiveCountUsingStrings() {
+//    let lhs = StaticArray(repeating: "", count: 0)
+//    let rhs = StaticArray(repeating: "", count: 3)
+//    let actual = lhs + rhs
+//    let expected: StaticArray = ["", "", ""]
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitRepeatingWithZeroCountAndInitByEmptyArrayLiteralUsingInts() {
     let lhs = StaticArray(repeating: 0, count: 0)
@@ -1064,14 +1064,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitRepeatingWithZeroCountAndInitByEmptyArrayLiteralUsingStrings() {
-    let lhs = StaticArray(repeating: "", count: 0)
-    let rhs: StaticArray<String> = []
-    let actual = lhs + rhs
-    let expected: StaticArray<String> = []
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitRepeatingWithZeroCountAndInitByEmptyArrayLiteralUsingStrings() {
+//    let lhs = StaticArray(repeating: "", count: 0)
+//    let rhs: StaticArray<String> = []
+//    let actual = lhs + rhs
+//    let expected: StaticArray<String> = []
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitRepeatingWithZeroCountAndInitByNonEmptyArrayLiteralUsingInts() {
     let lhs = StaticArray(repeating: 0, count: 0)
@@ -1082,14 +1082,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitRepeatingWithZeroCountAndInitByNonEmptyArrayLiteralUsingStrings() {
-    let lhs = StaticArray(repeating: "", count: 0)
-    let rhs: StaticArray = ["a", "b", "c"]
-    let actual = lhs + rhs
-    let expected: StaticArray = ["a", "b", "c"]
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitRepeatingWithZeroCountAndInitByNonEmptyArrayLiteralUsingStrings() {
+//    let lhs = StaticArray(repeating: "", count: 0)
+//    let rhs: StaticArray = ["a", "b", "c"]
+//    let actual = lhs + rhs
+//    let expected: StaticArray = ["a", "b", "c"]
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitRepeatingWithPositiveCountAndInitUsingInts() {
     let lhs = StaticArray(repeating: 0, count: 3)
@@ -1100,14 +1100,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitRepeatingWithPositiveCountAndInitUsingStrings() {
-    let lhs = StaticArray(repeating: "", count: 3)
-    let rhs = StaticArray<String>()
-    let actual = lhs + rhs
-    let expected: StaticArray = ["", "", ""]
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitRepeatingWithPositiveCountAndInitUsingStrings() {
+//    let lhs = StaticArray(repeating: "", count: 3)
+//    let rhs = StaticArray<String>()
+//    let actual = lhs + rhs
+//    let expected: StaticArray = ["", "", ""]
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitRepeatingWithPositiveCountAndInitRepeatingWithZeroCountUsingInts() {
     let lhs = StaticArray(repeating: 0, count: 3)
@@ -1118,14 +1118,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitRepeatingWithPositiveCountAndInitRepeatingWithZeroCountUsingStrings() {
-    let lhs = StaticArray(repeating: "", count: 3)
-    let rhs = StaticArray(repeating: "", count: 0)
-    let actual = lhs + rhs
-    let expected: StaticArray = ["", "", ""]
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitRepeatingWithPositiveCountAndInitRepeatingWithZeroCountUsingStrings() {
+//    let lhs = StaticArray(repeating: "", count: 3)
+//    let rhs = StaticArray(repeating: "", count: 0)
+//    let actual = lhs + rhs
+//    let expected: StaticArray = ["", "", ""]
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitRepeatingWithPositiveCountAndInitRepeatingWithPositiveCountUsingInts() {
     let lhs = StaticArray(repeating: 0, count: 3)
@@ -1136,14 +1136,14 @@ extension StaticArrayTests {
     XCTAssertEqual(expected, actual)
   }
 
-  func testAdditionFromInitRepeatingWithPositiveCountAndInitRepeatingWithPositiveCountUsingStrings() {
-    let lhs = StaticArray(repeating: "", count: 3)
-    let rhs = StaticArray(repeating: "", count: 3)
-    let actual = lhs + rhs
-    let expected: StaticArray = ["", "", "", "", "", ""]
-
-    XCTAssertEqual(expected, actual)
-  }
+//  func testAdditionFromInitRepeatingWithPositiveCountAndInitRepeatingWithPositiveCountUsingStrings() {
+//    let lhs = StaticArray(repeating: "", count: 3)
+//    let rhs = StaticArray(repeating: "", count: 3)
+//    let actual = lhs + rhs
+//    let expected: StaticArray = ["", "", "", "", "", ""]
+//
+//    XCTAssertEqual(expected, actual)
+//  }
 
   func testAdditionFromInitRepeatingWithPositiveCountAndInitByEmptyArrayLiteral() {
     let lhs = StaticArray(repeating: 0, count: 3)
